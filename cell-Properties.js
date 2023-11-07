@@ -78,6 +78,14 @@ underline.addEventListener("click", (e) => {
     : inactiveColorProp;
 }); // -> UI change 2
 
+fontSize.addEventListener("change", (e) => {
+  let address = addressBar.value;
+  let [cell, cellProp] = activeCell(address);
+
+  cellProp.fontSize = fontSize.value; //Data Change
+  cell.style.fontSize = cellProp.fontSize + "px";
+});
+
 function activeCell(address) {
   let [rid, cid] = decodeRIDCIDFromAddress(address);
   //Access cell and stprage object
