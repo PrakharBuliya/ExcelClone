@@ -86,6 +86,16 @@ fontSize.addEventListener("change", (e) => {
   cell.style.fontSize = cellProp.fontSize + "px";
 });
 
+fontFamily.addEventListener("change", (e) => {
+  let address = addressBar.value;
+  let [cell, cellProp] = activeCell(address);
+
+  //Modification
+  cellProp.fontFamily = fontFamily.value; //-> Data change
+  cell.style.fontFamily = cellProp.fontFamily; // -> UI change 1
+  fontFamily.value = cellProp.fontFamily;
+}); // -> UI change 2
+
 function activeCell(address) {
   let [rid, cid] = decodeRIDCIDFromAddress(address);
   //Access cell and stprage object
